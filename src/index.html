@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>FlipPlay — Portal Hiburan Anime, Manga & Drama Digital</title>
+    <meta
+      name="description"
+      content="FlipPlay adalah platform kurasi hiburan digital all-in-one untuk streaming anime, drama, serta membaca manga dan light novel dengan takarir Indonesia resmi."
+    />
+    <meta name="keywords" content="anime streaming, manga reader, light novel, k-drama, j-drama, FlipPlay" />
+    <meta name="author" content="FlipPlay Media Lab" />
+
+    <meta property="og:title" content="FlipPlay — Portal Hiburan Anime, Manga & Drama Digital" />
+    <meta property="og:description" content="Streaming anime beresolusi 4K, baca manga bebas iklan, dan temukan tontonan berbasis mood di The Vibe Grid." />
+    <meta property="og:type" content="website" />
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    
+    <link rel="stylesheet" href="output.css" />
+
+    <style>
+      
+      .hero-grid-pattern {
+        background-color: #0b0c14;
+        background-image: linear-gradient(rgba(35, 37, 58, 0.25) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(35, 37, 58, 0.25) 1px, transparent 1px);
+        background-size: 40px 40px;
+        background-position: -1px -1px;
+      }
+
+      .navbar-scrolled {
+        background: rgba(11, 12, 20, 0.94) !important;
+        border-bottom: 1px solid rgba(45, 47, 74, 0.8) !important;
+        backdrop-filter: blur(16px);
+      }
+
+      .poster-card {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+      }
+      .poster-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+      }
+
+      #mobile-menu {
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+      }
+      #mobile-menu.open {
+        max-height: 480px;
+        opacity: 1;
+      }
+
+      .badge-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 3px 10px;
+        border-radius: 9999px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+
+      .badge-live {
+        background: rgba(16, 185, 129, 0.15);
+        border: 1px solid rgba(16, 185, 129, 0.35);
+        color: #34d399;
+      }
+
+      .badge-simulcast {
+        background: rgba(124, 58, 237, 0.15);
+        border: 1px solid rgba(124, 58, 237, 0.35);
+        color: #c4b5fd;
+      }
+
+      .badge-rating {
+        background: rgba(245, 158, 11, 0.15);
+        border: 1px solid rgba(245, 158, 11, 0.35);
+        color: #fbbf24;
+      }
+
+      
+      .schedule-tab.active {
+        background: #7c3aed;
+        color: #ffffff;
+        border-color: #a78bfa;
+      }
+
+      
+      .modal-scrollbar::-webkit-scrollbar {
+        width: 5px;
+      }
+      .modal-scrollbar::-webkit-scrollbar-thumb {
+        background: #2e3049;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+
+  <body class="bg-flipbg text-textprim font-sans antialiased selection:bg-primary selection:text-white">
+
+    
+    <aside class="bg-flipsec border-b border-border/70 text-xs py-2 px-4 z-50 relative" aria-label="Ticker Pengumuman Rilis">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <div class="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
+          <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 font-bold text-[11px] uppercase tracking-wider flex-shrink-0">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            Simulcast Hari Ini
+          </span>
+          <span class="text-textsec text-[12px] truncate">
+            Attack on Titan Final Ep. 89 (Sub ID) • One Piece Bab 1110 (Manga) • Frieren Ep. 28 • Alice in Borderland S2
+          </span>
+        </div>
+        <div class="hidden sm:flex items-center gap-4 text-textsec text-[11px] flex-shrink-0">
+          <span class="flex items-center gap-1 text-slate-300">
+            <svg class="w-3.5 h-3.5 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Takarir Indonesia Resmi
+          </span>
+          <span>Server UMM Region: ID-JKT</span>
+        </div>
+      </div>
+    </aside>
+
+    
+    <header
+      id="site-header"
+      class="sticky top-0 z-40 transition-all duration-200"
+      style="background: rgba(11, 12, 20, 0.88); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(35, 37, 58, 0.6);"
+    >
+      <nav id="main-nav" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navigasi Utama">
+        <div class="flex items-center justify-between h-16">
+
+          
+          <a href="#home" class="flex items-center gap-2.5 group" aria-label="FlipPlay Beranda">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-black text-sm bg-primary group-hover:bg-primaryhov transition-colors shadow-md shadow-primary/20">
+              FP
+            </div>
+            <span class="text-lg font-bold tracking-tight text-white">
+              Flip<span class="text-secondary font-black">Play</span>
+            </span>
+          </a>
+
+          
+          <ul class="hidden md:flex items-center gap-7 list-none text-sm font-medium" role="menubar">
+            <li role="none">
+              <a href="#home" role="menuitem" class="text-textsec hover:text-white transition-colors">
+                Beranda
+              </a>
+            </li>
+            <li role="none">
+              <a href="#schedule" role="menuitem" class="text-textsec hover:text-white transition-colors flex items-center gap-1.5">
+                Jadwal Rilis
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              </a>
+            </li>
+            <li role="none">
+              <a href="#vibe-grid" role="menuitem" class="text-textsec hover:text-white transition-colors flex items-center gap-1.5">
+                The Vibe Grid
+                <span class="text-[10px] px-1.5 py-0.2 rounded bg-primary/20 text-secondary border border-primary/30">API</span>
+              </a>
+            </li>
+            <li role="none">
+              <a href="#content" role="menuitem" class="text-textsec hover:text-white transition-colors">
+                Katalog Media
+              </a>
+            </li>
+            <li role="none">
+              <a href="#features" role="menuitem" class="text-textsec hover:text-white transition-colors">
+                Fitur
+              </a>
+            </li>
+          </ul>
+
+          
+          <div class="hidden md:flex items-center gap-3">
+            
+            <a
+              href="#vibe-grid"
+              id="nav-search-shortcut"
+              class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-flipsec border border-border text-xs text-textsec hover:text-white hover:border-secondary/40 transition-colors"
+              title="Cari Judul Anime (Tekan /)"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <span>Cari Judul...</span>
+              <kbd class="px-1.5 py-0.5 rounded bg-flipcard text-[10px] font-mono text-textsec border border-border">/</kbd>
+            </a>
+
+            
+            <button
+              id="nav-watchlist-btn"
+              type="button"
+              class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-flipsec border border-border text-xs font-semibold text-textsec hover:text-white hover:border-red-500/40 transition-colors cursor-pointer"
+              aria-label="Lihat Koleksi Watchlist"
+            >
+              <svg class="w-3.5 h-3.5 text-rose-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+              <span>Watchlist</span>
+              <span id="nav-watchlist-count" class="px-1.5 py-0.2 rounded-full bg-rose-500/20 text-rose-300 text-[10px] font-bold">0</span>
+            </button>
+
+            
+            <a href="#vibe-grid" class="btn-primary text-xs font-semibold px-4 py-2 rounded-lg">
+              Mulai Nonton
+            </a>
+          </div>
+
+          
+          <button
+            id="menu-toggle"
+            class="md:hidden p-2 rounded-lg text-textsec hover:text-white hover:bg-flipcard transition-colors"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            aria-label="Toggle Menu"
+          >
+            <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        
+        <div id="mobile-menu" role="menu" aria-label="Menu Mobile">
+          <ul class="flex flex-col gap-1 py-3 list-none border-t border-border">
+            <li><a href="#home" class="block px-3 py-2 rounded-lg text-textsec hover:text-white hover:bg-flipcard text-sm">Beranda</a></li>
+            <li><a href="#schedule" class="block px-3 py-2 rounded-lg text-textsec hover:text-white hover:bg-flipcard text-sm">Jadwal Rilis</a></li>
+            <li><a href="#vibe-grid" class="block px-3 py-2 rounded-lg text-textsec hover:text-white hover:bg-flipcard text-sm">The Vibe Grid</a></li>
+            <li><a href="#content" class="block px-3 py-2 rounded-lg text-textsec hover:text-white hover:bg-flipcard text-sm">Katalog Media</a></li>
+            <li><a href="#features" class="block px-3 py-2 rounded-lg text-textsec hover:text-white hover:bg-flipcard text-sm">Fitur</a></li>
+            <li class="pt-2">
+              <button
+                id="mobile-watchlist-btn"
+                type="button"
+                class="w-full flex items-center justify-between px-3 py-2 rounded-lg bg-flipsec border border-border text-sm text-textsec hover:text-white cursor-pointer"
+              >
+                <span class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-rose-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                  </svg>
+                  <span>Watchlist Saya</span>
+                </span>
+                <span id="mobile-watchlist-count" class="px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 text-xs font-bold">0</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+
+      
+      <section
+        id="home"
+        class="relative min-h-[85vh] flex items-center hero-grid-pattern border-b border-border/70 py-16 lg:py-24"
+        aria-labelledby="hero-heading"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+
+            
+            <div class="lg:col-span-7 flex flex-col gap-6">
+
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-flipsec border border-border text-xs w-fit">
+                <span class="badge-tag badge-live">Official Simulcast</span>
+                <span class="text-textsec text-[12px]">Katalog Summer & Fall 2026</span>
+              </div>
+
+              <h1 id="hero-heading" class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.12]">
+                Streaming Anime, Baca Manga & Drama.<br />
+                <span class="text-gradient">Dalam Satu Layar Eksklusif.</span>
+              </h1>
+
+              <p class="text-textsec text-base sm:text-lg leading-relaxed max-w-xl">
+                Tonton serial anime beresolusi 4K dengan takarir Indonesia resmi, nikmati ribuan bab manga mingguan tanpa jeda iklan, dan temukan cerita berikutnya berdasarkan atmosfer hatimu.
+              </p>
+
+              
+              <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                <a
+                  href="#vibe-grid"
+                  id="explore-now-btn"
+                  class="btn-primary inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl text-sm font-semibold"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  Eksplorasi The Vibe Grid
+                </a>
+                <a
+                  href="#schedule"
+                  class="btn-secondary inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold"
+                >
+                  <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  Jadwal Rilis Minggu Ini
+                </a>
+              </div>
+
+              
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-border/80">
+                <div>
+                  <p class="text-textprim font-black text-xl">4K UHD</p>
+                  <p class="text-textsec text-xs mt-0.5">Bitrate Tinggi</p>
+                </div>
+                <div>
+                  <p class="text-textprim font-black text-xl">Dual Audio</p>
+                  <p class="text-textsec text-xs mt-0.5">JP / Dub ID</p>
+                </div>
+                <div>
+                  <p class="text-textprim font-black text-xl">Bebas Iklan</p>
+                  <p class="text-textsec text-xs mt-0.5">Mode Baca Manga</p>
+                </div>
+                <div>
+                  <p class="text-textprim font-black text-xl">Auto-Skip</p>
+                  <p class="text-textsec text-xs mt-0.5">Intro & Outro 85s</p>
+                </div>
+              </div>
+
+            </div>
+
+            
+            <div class="lg:col-span-5">
+              <div class="card-surface rounded-2xl overflow-hidden border border-border shadow-2xl relative group">
+
+                
+                <div class="relative h-72 sm:h-80 overflow-hidden bg-flipcard">
+                  <img
+                    src="poster_aot.png"
+                    alt="Attack on Titan Final Season"
+                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-flipcard via-flipcard/40 to-transparent"></div>
+
+                  
+                  <div class="absolute top-3 left-3 flex items-center gap-1.5 flex-wrap">
+                    <span class="badge-tag bg-red-600 text-white font-bold text-[10px]">SPOTLIGHT #1</span>
+                    <span class="badge-tag badge-simulcast text-[10px]">Final Season</span>
+                  </div>
+
+                  <div class="absolute top-3 right-3 badge-tag badge-rating text-[11px] font-bold">
+                    ★ 9.1 / 10
+                  </div>
+
+                  
+                  <div class="absolute bottom-3 left-4 right-4">
+                    <div class="flex items-center gap-2 text-xs text-textsec mb-1">
+                      <span>Wit Studio & MAPPA</span>
+                      <span>•</span>
+                      <span>89 Episode Selesai</span>
+                    </div>
+                    <h2 class="text-xl font-black text-white leading-tight">
+                      Attack on Titan: The Final Chapters
+                    </h2>
+                  </div>
+                </div>
+
+                
+                <div class="p-5 flex flex-col gap-3.5 bg-flipcard">
+                  <p class="text-textsec text-xs leading-relaxed line-clamp-2">
+                    Eren Yeager memicu gemuruh The Rumbling untuk menentukan eksistensi pulau Paradis. Pertarungan pamungkas umat manusia melawan kepunahan total.
+                  </p>
+
+                  <div class="flex items-center justify-between gap-3 pt-2 border-t border-border/80">
+                    <a
+                      href="#vibe-grid"
+                      class="btn-primary flex-1 text-center py-2.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-2"
+                    >
+                      <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                      Tonton di Vibe Grid
+                    </a>
+                    <a
+                      href="#content"
+                      class="btn-secondary px-3 py-2.5 rounded-lg text-xs font-medium text-textsec hover:text-white"
+                      title="Lihat manga version"
+                    >
+                      Baca Manga ↗
+                    </a>
+                  </div>
+                </div>
+
+                
+                <div class="grid grid-cols-2 divide-x divide-border border-t border-border bg-flipsec/60 text-xs py-2 px-3">
+                  <div class="flex items-center gap-2 pr-2">
+                    <span class="text-[10px] px-1.5 py-0.2 rounded bg-blue-500/20 text-blue-300 font-bold">MANGA</span>
+                    <span class="text-textsec text-[11px] truncate">One Piece Bab 1110</span>
+                  </div>
+                  <div class="flex items-center gap-2 pl-2">
+                    <span class="text-[10px] px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-bold">NOVEL</span>
+                    <span class="text-textsec text-[11px] truncate">Overlord Vol. 17</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      
+      <section id="schedule" class="py-16 bg-flipsec/40 border-b border-border/70" aria-labelledby="schedule-heading">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+            <div>
+              <p class="text-secondary text-xs font-bold uppercase tracking-wider mb-1.5">Jadwal Rilis Terjadwal</p>
+              <h2 id="schedule-heading" class="text-2xl sm:text-3xl font-black text-textprim">
+                Kalender Simulcast Mingguan
+              </h2>
+            </div>
+            <p class="text-textsec text-xs sm:text-sm max-w-md">
+              Episode anime baru diperbarui setiap minggu secara bersamaan dengan siaran televisi Jepang (WIB).
+            </p>
+          </div>
+
+          
+          <div class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 no-scrollbar" role="tablist" aria-label="Pilih Hari Simulcast">
+            <button type="button" class="schedule-tab px-4 py-2 rounded-xl text-xs font-semibold border border-border bg-flipcard text-textsec hover:text-white" data-day="senin">Senin</button>
+            <button type="button" class="schedule-tab px-4 py-2 rounded-xl text-xs font-semibold border border-border bg-flipcard text-textsec hover:text-white" data-day="selasa">Selasa</button>
+            <button type="button" class="schedule-tab px-4 py-2 rounded-xl text-xs font-semibold border border-border bg-flipcard text-textsec hover:text-white" data-day="rabu">Rabu</button>
+            <button type="button" class="schedule-tab px-4 py-2 rounded-xl text-xs font-semibold border border-border bg-flipcard text-textsec hover:text-white" data-day="kamis">Kamis</button>
+            <button type="button" class="schedule-tab px-4 py-2 rounded-xl text-xs font-semibold border border-border bg-flipcard text-textsec hover:text-white" data-day="jumat">Jumat</button>
+            <button type="button" class="schedule-tab active px-4 py-2 rounded-xl text-xs font-semibold border" data-day="sabtu" aria-selected="true">Sabtu (Hari Ini)</button>
+            <button type="button" class="schedule-tab px-4 py-2 rounded-xl text-xs font-semibold border border-border bg-flipcard text-textsec hover:text-white" data-day="minggu">Minggu</button>
+          </div>
+
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="schedule-content">
+            <div class="card-surface p-4 rounded-xl border border-border flex flex-col justify-between gap-3 hover:border-primary/40 transition-colors">
+              <div>
+                <div class="flex items-center justify-between text-xs text-textsec mb-2">
+                  <span class="text-emerald-400 font-bold">19:30 WIB</span>
+                  <span class="badge-tag badge-simulcast text-[10px]">Episode 28</span>
+                </div>
+                <h3 class="text-sm font-bold text-textprim">Frieren: Beyond Journey's End</h3>
+                <p class="text-textsec text-xs mt-1">Petualangan Sang Penyihir Abadi</p>
+              </div>
+              <div class="text-[11px] text-textsec pt-2 border-t border-border flex items-center justify-between">
+                <span>Studio Madhouse</span>
+                <span class="text-yellow-400 font-semibold">★ 9.1</span>
+              </div>
+            </div>
+
+            <div class="card-surface p-4 rounded-xl border border-border flex flex-col justify-between gap-3 hover:border-primary/40 transition-colors">
+              <div>
+                <div class="flex items-center justify-between text-xs text-textsec mb-2">
+                  <span class="text-emerald-400 font-bold">21:00 WIB</span>
+                  <span class="badge-tag badge-live text-[10px]">Episode 89</span>
+                </div>
+                <h3 class="text-sm font-bold text-textprim">Attack on Titan The Final</h3>
+                <p class="text-textsec text-xs mt-1">The Rumbling Finale Climax</p>
+              </div>
+              <div class="text-[11px] text-textsec pt-2 border-t border-border flex items-center justify-between">
+                <span>Studio MAPPA</span>
+                <span class="text-yellow-400 font-semibold">★ 9.0</span>
+              </div>
+            </div>
+
+            <div class="card-surface p-4 rounded-xl border border-border flex flex-col justify-between gap-3 hover:border-primary/40 transition-colors">
+              <div>
+                <div class="flex items-center justify-between text-xs text-textsec mb-2">
+                  <span class="text-emerald-400 font-bold">22:00 WIB</span>
+                  <span class="badge-tag badge-simulcast text-[10px]">Bab 1110</span>
+                </div>
+                <h3 class="text-sm font-bold text-textprim">One Piece (Manga Reader)</h3>
+                <p class="text-textsec text-xs mt-1">Arc Egghead Pulau Masa Depan</p>
+              </div>
+              <div class="text-[11px] text-textsec pt-2 border-t border-border flex items-center justify-between">
+                <span>Eiichiro Oda</span>
+                <span class="text-yellow-400 font-semibold">★ 9.2</span>
+              </div>
+            </div>
+
+            <div class="card-surface p-4 rounded-xl border border-border flex flex-col justify-between gap-3 hover:border-primary/40 transition-colors">
+              <div>
+                <div class="flex items-center justify-between text-xs text-textsec mb-2">
+                  <span class="text-emerald-400 font-bold">23:30 WIB</span>
+                  <span class="badge-tag badge-simulcast text-[10px]">Episode 16</span>
+                </div>
+                <h3 class="text-sm font-bold text-textprim">Alice in Borderland (Drama)</h3>
+                <p class="text-textsec text-xs mt-1">Permainan Kartu Kematian Tokyo</p>
+              </div>
+              <div class="text-[11px] text-textsec pt-2 border-t border-border flex items-center justify-between">
+                <span>Live Action Jepang</span>
+                <span class="text-yellow-400 font-semibold">★ 8.6</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      
+      <section
+        id="vibe-grid"
+        class="py-20 lg:py-24 relative"
+        aria-labelledby="vibe-heading"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+            <div>
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-secondary text-xs font-semibold uppercase tracking-wider mb-2">
+                <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                Tenrai Live Database Engine
+              </div>
+              <h2 id="vibe-heading" class="text-3xl sm:text-4xl font-black text-textprim">
+                The <span class="text-gradient">Vibe Grid</span>
+              </h2>
+            </div>
+            <p class="text-textsec text-sm max-w-md">
+              Katalog anime real-time dengan filter atmosfer (*Aura*). Klik kartu mana pun untuk membuka sinopsis lengkap dan trailer interaktif.
+            </p>
+          </div>
+
+          
+          <div class="card-surface rounded-2xl border border-border p-5 mb-10">
+            <div class="flex flex-col gap-5">
+
+              
+              <div class="relative w-full">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-textsec">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+
+                <input
+                  type="text"
+                  id="vibe-search-input"
+                  placeholder="Cari berdasarkan judul (contoh: Attack on Titan, One Piece, Frieren, Cowboy Bebop)..."
+                  class="input-dark w-full pl-12 pr-28 py-3.5 rounded-xl text-sm"
+                  autocomplete="off"
+                  aria-label="Input pencarian anime"
+                />
+
+                <div class="absolute inset-y-0 right-0 pr-3 flex items-center gap-2">
+                  <button
+                    type="button"
+                    id="vibe-search-clear"
+                    class="hidden text-textsec hover:text-white transition-colors p-1"
+                    aria-label="Hapus kata kunci pencarian"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                  <span class="hidden sm:inline-block px-2 py-1 rounded bg-flipcard text-[11px] font-mono text-textsec border border-border">
+                    Tekan /
+                  </span>
+                </div>
+              </div>
+
+              
+              <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pt-4 border-t border-border">
+
+                
+                <div class="flex flex-wrap items-center gap-2" id="aura-filter-buttons" role="group" aria-label="Filter Aura">
+                  <span class="text-xs font-bold text-textsec uppercase tracking-wider mr-1">Aura:</span>
+                  <button
+                    type="button"
+                    data-aura="all"
+                    class="aura-btn active px-3.5 py-1.5 rounded-xl text-xs font-semibold inline-flex items-center gap-1.5"
+                    aria-pressed="true"
+                  >
+                    ✦ Semua
+                  </button>
+                  <button
+                    type="button"
+                    data-aura="high-energy"
+                    class="aura-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold inline-flex items-center gap-1.5"
+                    aria-pressed="false"
+                  >
+                    ⚡ High Action
+                  </button>
+                  <button
+                    type="button"
+                    data-aura="melancholy"
+                    class="aura-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold inline-flex items-center gap-1.5"
+                    aria-pressed="false"
+                  >
+                    🌙 Melancholy
+                  </button>
+                  <button
+                    type="button"
+                    data-aura="binge-mode"
+                    class="aura-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold inline-flex items-center gap-1.5"
+                    aria-pressed="false"
+                  >
+                    🍿 Binge Mode (24+ Ep)
+                  </button>
+                  <button
+                    type="button"
+                    data-aura="watchlist"
+                    class="aura-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold inline-flex items-center gap-1.5"
+                    aria-pressed="false"
+                    id="aura-watchlist-tab"
+                  >
+                    <svg class="w-3.5 h-3.5 text-rose-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    <span>Watchlist Saya</span>
+                    <span id="grid-watchlist-count" class="px-1.5 py-0.2 rounded-full bg-rose-500/20 text-rose-300 text-[10px] font-bold">0</span>
+                  </button>
+                </div>
+
+                
+                <div class="flex items-center gap-3 text-xs text-textsec">
+                  <div class="flex items-center gap-1.5">
+                    <label for="vibe-sort-select" class="font-medium text-textsec">Urutan:</label>
+                    <select
+                      id="vibe-sort-select"
+                      class="bg-flipcard border border-border text-textprim text-xs rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-primary"
+                    >
+                      <option value="score-desc">Rating Tertinggi ★</option>
+                      <option value="title-asc">Judul (A - Z)</option>
+                      <option value="episodes-desc">Episode Terbanyak</option>
+                    </select>
+                  </div>
+                  <span class="text-border">|</span>
+                  <span id="vibe-media-count" class="font-semibold text-textprim">Memuat...</span>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          
+          <div id="vibe-loading" class="flex flex-col items-center justify-center py-16 gap-3 text-center" role="status">
+            <div class="w-10 h-10 rounded-full border-3 border-primary/20 border-t-primary animate-spin"></div>
+            <p class="text-textsec text-sm animate-pulse">Menghubungkan ke Tenrai API & memuat katalog media...</p>
+          </div>
+
+          
+          <div id="vibe-error" class="hidden my-12" role="alert">
+            <div class="card-surface rounded-2xl border border-red-500/30 p-8 max-w-lg mx-auto text-center flex flex-col items-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-400 text-xl font-bold">
+                !
+              </div>
+              <h3 class="text-lg font-bold text-white">Gagal Mengambil Data API</h3>
+              <p id="vibe-error-msg" class="text-textsec text-xs leading-relaxed">
+                Tidak dapat terhubung ke server Tenrai. Pastikan koneksi internet stabil.
+              </p>
+              <button
+                type="button"
+                id="vibe-retry-btn"
+                class="btn-primary px-5 py-2 rounded-xl text-xs font-semibold cursor-pointer mt-1"
+              >
+                Coba Lagi
+              </button>
+            </div>
+          </div>
+
+          
+          <div id="vibe-empty" class="hidden my-12 text-center" role="region" aria-label="Hasil pencarian kosong">
+            <div class="card-surface rounded-2xl border border-border p-10 max-w-md mx-auto flex flex-col items-center gap-3">
+              <div class="w-14 h-14 rounded-2xl bg-flipcard border border-border flex items-center justify-center text-secondary text-2xl">
+                🔍
+              </div>
+              <h3 class="text-lg font-bold text-white">Tidak Ada Media Ditemukan</h3>
+              <p id="vibe-empty-desc" class="text-textsec text-xs leading-relaxed">
+                Tidak ditemukan judul yang cocok dengan filter atau kata kunci pencarian.
+              </p>
+              <button
+                type="button"
+                id="vibe-reset-btn"
+                class="btn-secondary px-4 py-2 rounded-xl text-xs font-semibold mt-2 cursor-pointer"
+              >
+                Reset Filter
+              </button>
+            </div>
+          </div>
+
+          
+          <div
+            id="vibe-cards-grid"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            aria-live="polite"
+          >
+            
+          </div>
+
+        </div>
+      </section>
+
+      
+      <section id="content" class="py-20 bg-flipsec/30 border-t border-border/80" aria-labelledby="content-heading">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <header class="text-center mb-16">
+            <p class="text-secondary text-xs font-bold uppercase tracking-wider mb-2">Katalog Ekosistem</p>
+            <h2 id="content-heading" class="text-3xl sm:text-4xl font-black text-textprim mb-3">
+              Koleksi Hiburan Lengkap
+            </h2>
+            <p class="text-textsec text-sm sm:text-base max-w-xl mx-auto">
+              Satu portal untuk berbagai format kesukaanmu — streaming serial animasi, baca ribuan bab komik, hingga novel epik.
+            </p>
+          </header>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            
+            <article class="card-surface rounded-2xl overflow-hidden border border-border flex flex-col group hover:border-primary/50 transition-all">
+              <div class="h-44 relative overflow-hidden bg-flipcard">
+                <img src="poster_aot.png" alt="Anime Streaming" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <div class="absolute inset-0 bg-gradient-to-t from-flipcard via-transparent to-black/30"></div>
+                <div class="absolute top-3 left-3">
+                  <span class="badge-tag badge-live">Streaming</span>
+                </div>
+                <div class="absolute bottom-2 left-3 text-xs font-bold text-white">
+                  Anime HD & 4K
+                </div>
+              </div>
+              <div class="p-5 flex flex-col justify-between flex-1 gap-3">
+                <p class="text-textsec text-xs leading-relaxed">
+                  Streaming simulcast serial anime mingguan langsung dari Jepang dengan takarir bahasa Indonesia resmi.
+                </p>
+                <div class="text-[11px] text-textsec flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded bg-flipcard border border-border">4K HDR</span>
+                  <span class="px-2 py-0.5 rounded bg-flipcard border border-border">Sub ID</span>
+                </div>
+                <a href="#vibe-grid" class="text-secondary hover:text-primary text-xs font-semibold flex items-center gap-1 mt-auto pt-2">
+                  Buka Koleksi Anime ↗
+                </a>
+              </div>
+            </article>
+
+            
+            <article class="card-surface rounded-2xl overflow-hidden border border-border flex flex-col group hover:border-blue-500/50 transition-all">
+              <div class="h-44 relative overflow-hidden bg-flipcard">
+                <img src="poster_onepiece.png" alt="Manga Collection" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <div class="absolute inset-0 bg-gradient-to-t from-flipcard via-transparent to-black/30"></div>
+                <div class="absolute top-3 left-3">
+                  <span class="badge-tag bg-blue-500/20 text-blue-300 border border-blue-500/30">E-Reader</span>
+                </div>
+                <div class="absolute bottom-2 left-3 text-xs font-bold text-white">
+                  Manga Komik
+                </div>
+              </div>
+              <div class="p-5 flex flex-col justify-between flex-1 gap-3">
+                <p class="text-textsec text-xs leading-relaxed">
+                  Ribuan judul manga dengan pembaca ramah mata: mode scroll vertikal (Webtoon) atau lembaran tradisional.
+                </p>
+                <div class="text-[11px] text-textsec flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded bg-flipcard border border-border">Bab Baru Tiap Minggu</span>
+                  <span class="px-2 py-0.5 rounded bg-flipcard border border-border">Bebas Iklan</span>
+                </div>
+                <a href="#vibe-grid" class="text-blue-400 hover:text-blue-300 text-xs font-semibold flex items-center gap-1 mt-auto pt-2">
+                  Baca Manga Sekarang ↗
+                </a>
+              </div>
+            </article>
+
+            
+            <article class="card-surface rounded-2xl overflow-hidden border border-border flex flex-col group hover:border-amber-500/50 transition-all">
+              <div class="h-44 relative overflow-hidden bg-flipcard">
+                <img src="poster_overlord.png" alt="Light Novel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <div class="absolute inset-0 bg-gradient-to-t from-flipcard via-transparent to-black/30"></div>
+                <div class="absolute top-3 left-3">
+                  <span class="badge-tag bg-amber-500/20 text-amber-300 border border-amber-500/30">E-Book</span>
+                </div>
+                <div class="absolute bottom-2 left-3 text-xs font-bold text-white">
+                  Light Novel
+                </div>
+              </div>
+              <div class="p-5 flex flex-col justify-between flex-1 gap-3">
+                <p class="text-textsec text-xs leading-relaxed">
+                  Kisah fantasi dan isekai orisinal dalam teks naratif berilustrasi. Atur ukuran font dan warna latar sesukamu.
+                </p>
+                <div class="text-[11px] text-textsec flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded bg-flipcard border border-border">Ilustrasi Lengkap</span>
+                  <span class="px-2 py-0.5 rounded bg-flipcard border border-border">Night Mode</span>
+                </div>
+                <a href="#vibe-grid" class="text-amber-400 hover:text-amber-300 text-xs font-semibold flex items-center gap-1 mt-auto pt-2">
+                  Buka Light Novel ↗
+                </a>
+              </div>
+            </article>
+
+            
+            <article class="card-surface rounded-2xl overflow-hidden border border-border flex flex-col group hover:border-emerald-500/50 transition-all">
+              <div class="h-44 relative overflow-hidden bg-gradient-to-br from-purple-900 to-slate-900 flex items-center justify-center">
+                <div class="text-center p-4">
+                  <span class="text-4xl">🎬</span>
+                  <p class="text-xs text-textsec mt-2 font-mono">K-Drama • J-Drama</p>
+                </div>
+                <div class="absolute top-3 left-3">
+                  <span class="badge-tag bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">On Air</span>
+                </div>
+                <div class="absolute bottom-2 left-3 text-xs font-bold text-white">
+                  Drama Asia
+                </div>
+              </div>
+              <div class="p-5 flex flex-col justify-between flex-1 gap-3">
+                <p class="text-textsec text-xs leading-relaxed">
+                  Koleksi serial drama Korea dan Jepang pilihan dengan kualitas siaran prima dan update rilis mingguan.
+                </p>
+                <div class="text-[11px] text-textsec flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded bg-flipcard border border-border">Takarir Multi-Bahasa</span>
+                  <span class="px-2 py-0.5 rounded bg-flipcard border border-border">HD 1080p</span>
+                </div>
+                <a href="#vibe-grid" class="text-emerald-400 hover:text-emerald-300 text-xs font-semibold flex items-center gap-1 mt-auto pt-2">
+                  Tonton Drama Asia ↗
+                </a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      
+      <section id="features" class="py-20 border-t border-border/80" aria-labelledby="features-heading">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <header class="text-center mb-16">
+            <p class="text-secondary text-xs font-bold uppercase tracking-wider mb-2">Desain Berfokus Penonton</p>
+            <h2 id="features-heading" class="text-3xl sm:text-4xl font-black text-textprim mb-3">
+              Fitur Pengalaman FlipPlay
+            </h2>
+            <p class="text-textsec text-sm sm:text-base max-w-xl mx-auto">
+              Dirancang untuk kenyamanan maraton anime dan membaca tanpa distraksi.
+            </p>
+          </header>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+            
+            <div class="card-surface p-6 rounded-2xl border border-border flex flex-col gap-4">
+              <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center text-primary text-xl font-bold">
+                🎬
+              </div>
+              <h3 class="text-base font-bold text-textprim">Pemutar Cerdas & Bebas Gangguan</h3>
+              <p class="text-textsec text-xs leading-relaxed">
+                Fitur lewati pembuka (*intro*) dan penutup (*outro*) otomatis, tombol loncat 10 detik, kontrol kecepatan 0.5x hingga 2.0x, dan resolusi adaptif hemat kuota.
+              </p>
+              <ul class="text-xs text-textsec flex flex-col gap-1.5 pt-2 border-t border-border list-none mt-auto">
+                <li class="flex items-center gap-2">✓ Auto-Skip 85 detik intro lagu</li>
+                <li class="flex items-center gap-2">✓ Kualitas 360p hingga 4K UHD</li>
+              </ul>
+            </div>
+
+            
+            <div class="card-surface p-6 rounded-2xl border border-border flex flex-col gap-4">
+              <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl font-bold">
+                📖
+              </div>
+              <h3 class="text-base font-bold text-textprim">Reader Manga Ramah Mata</h3>
+              <p class="text-textsec text-xs leading-relaxed">
+                Mode pembaca webtoon gulir vertikal lancar serta mode lembar kanan-ke-kiri khas Jepang. Dilengkapi penyaring cahaya biru untuk sesi maraton malam hari.
+              </p>
+              <ul class="text-xs text-textsec flex flex-col gap-1.5 pt-2 border-t border-border list-none mt-auto">
+                <li class="flex items-center gap-2">✓ Simpan posisi bab terakhir secara otomatis</li>
+                <li class="flex items-center gap-2">✓ Bebas iklan banner yang menutupi panel</li>
+              </ul>
+            </div>
+
+            
+            <div class="card-surface p-6 rounded-2xl border border-border flex flex-col gap-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl font-bold">
+                📱
+              </div>
+              <h3 class="text-base font-bold text-textprim">Watchlist & Sinkronisasi Lokal</h3>
+              <p class="text-textsec text-xs leading-relaxed">
+                Tandai anime dan manga favoritmu cukup dengan satu klik ikon hati. Data tersimpan aman di browser kamu melalui browser LocalStorage tanpa perlu login berulang.
+              </p>
+              <ul class="text-xs text-textsec flex flex-col gap-1.5 pt-2 border-t border-border list-none mt-auto">
+                <li class="flex items-center gap-2">✓ Filter instan tab Watchlist di Vibe Grid</li>
+                <li class="flex items-center gap-2">✓ Riwayat bacaan selalu tersimpan</li>
+              </ul>
+            </div>
+
+          </div>
+
+          
+          <div class="card-surface rounded-2xl border border-border p-6 lg:p-8 bg-flipcard">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+              <div>
+                <p class="text-2xl lg:text-3xl font-black text-textprim">12.500+</p>
+                <p class="text-textsec text-xs mt-1">Total Episode Anime</p>
+              </div>
+              <div>
+                <p class="text-2xl lg:text-3xl font-black text-textprim">40.000+</p>
+                <p class="text-textsec text-xs mt-1">Bab Manga & Komik</p>
+              </div>
+              <div>
+                <p class="text-2xl lg:text-3xl font-black text-emerald-400">100%</p>
+                <p class="text-textsec text-xs mt-1">Takarir Sub Indonesia</p>
+              </div>
+              <div>
+                <p class="text-2xl lg:text-3xl font-black text-secondary">4K UHD</p>
+                <p class="text-textsec text-xs mt-1">Dukungan Resolusi Prima</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      
+      <section id="contact" class="py-20 bg-flipsec/30 border-t border-border/80" aria-labelledby="contact-heading">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            
+            <div class="flex flex-col gap-6">
+              <div>
+                <p class="text-secondary text-xs font-bold uppercase tracking-wider mb-2">Pusat Bantuan & Komunitas</p>
+                <h2 id="contact-heading" class="text-3xl sm:text-4xl font-black text-textprim mb-3">
+                  Punya Pertanyaan atau Permintaan Judul?
+                </h2>
+                <p class="text-textsec text-sm leading-relaxed">
+                  Ingin mengajukan judul anime baru, melaporkan perbaikan subtitel, atau bekerja sama dengan tim FlipPlay? Hubungi kami langsung.
+                </p>
+              </div>
+
+              <div class="flex flex-col gap-3 text-xs text-textsec">
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-flipcard border border-border">
+                  <span class="text-lg">📧</span>
+                  <div>
+                    <p class="font-bold text-white">Email Dukungan</p>
+                    <p class="text-textsec">support@flipplay.id</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-flipcard border border-border">
+                  <span class="text-lg">📍</span>
+                  <div>
+                    <p class="font-bold text-white">Laboratorium Informatika</p>
+                    <p class="text-textsec">Universitas Muhammadiyah Malang, Indonesia</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="card-surface rounded-2xl border border-border p-6 sm:p-8">
+              <form id="contact-form" class="flex flex-col gap-4" novalidate>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="flex flex-col gap-1.5">
+                    <label for="contact-name" class="text-xs font-semibold text-textsec">Nama Lengkap</label>
+                    <input
+                      type="text"
+                      id="contact-name"
+                      placeholder="Masukkan nama"
+                      class="input-dark rounded-xl px-4 py-2.5 text-xs w-full"
+                      required
+                    />
+                  </div>
+                  <div class="flex flex-col gap-1.5">
+                    <label for="contact-email" class="text-xs font-semibold text-textsec">Alamat Email</label>
+                    <input
+                      type="email"
+                      id="contact-email"
+                      placeholder="email@anda.com"
+                      class="input-dark rounded-xl px-4 py-2.5 text-xs w-full"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-1.5">
+                  <label for="contact-subject" class="text-xs font-semibold text-textsec">Topik Pesan</label>
+                  <input
+                    type="text"
+                    id="contact-subject"
+                    placeholder="Contoh: Permintaan Judul Anime / Laporan Subtitel"
+                    class="input-dark rounded-xl px-4 py-2.5 text-xs w-full"
+                    required
+                  />
+                </div>
+
+                <div class="flex flex-col gap-1.5">
+                  <label for="contact-message" class="text-xs font-semibold text-textsec">Isi Pesan</label>
+                  <textarea
+                    id="contact-message"
+                    rows="4"
+                    placeholder="Tuliskan pesanmu dengan jelas..."
+                    class="input-dark rounded-xl px-4 py-2.5 text-xs w-full resize-none"
+                    required
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  id="submit-contact"
+                  class="btn-primary w-full py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer mt-1"
+                >
+                  Kirim Pesan
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    
+    <footer class="bg-flipsec border-t border-border py-12 text-xs text-textsec">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2.5">
+          <div class="w-6 h-6 rounded-md bg-primary flex items-center justify-center text-white font-bold text-xs">
+            FP
+          </div>
+          <p class="text-white font-bold">
+            FlipPlay <span class="text-textsec font-normal text-xs">• Pemrograman Web Modul 3</span>
+          </p>
+        </div>
+        <p class="text-center sm:text-right">
+          &copy; 2026 FlipPlay Media Lab. Dikembangkan untuk Praktikum Informatika UMM.
+        </p>
+      </div>
+    </footer>
+
+    
+    <div
+      id="anime-modal"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-all duration-200"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+    >
+      <div id="anime-modal-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+
+      <div
+        id="anime-modal-container"
+        class="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto card-surface border border-border rounded-2xl shadow-2xl z-10 modal-scrollbar p-6 sm:p-8 transform scale-95 transition-all duration-200"
+      >
+        
+        <button
+          id="anime-modal-close"
+          type="button"
+          class="absolute top-4 right-4 w-8 h-8 rounded-full bg-flipsec border border-border text-textsec hover:text-white flex items-center justify-center transition-colors z-20 cursor-pointer"
+          aria-label="Tutup jendela detail"
+        >
+          ✕
+        </button>
+
+        
+        <div id="anime-modal-body"></div>
+      </div>
+    </div>
+
+    
+    <script>
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('icon-open');
+      const iconClose = document.getElementById('icon-close');
+
+      menuToggle.addEventListener('click', function () {
+        const isOpen = mobileMenu.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+        iconOpen.classList.toggle('hidden', isOpen);
+        iconClose.classList.toggle('hidden', !isOpen);
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          mobileMenu.classList.remove('open');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+        });
+      });
+
+      const header = document.getElementById('site-header');
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 40) {
+          header.classList.add('navbar-scrolled');
+        } else {
+          header.classList.remove('navbar-scrolled');
+        }
+      });
+
+      const scheduleTabs = document.querySelectorAll('.schedule-tab');
+      scheduleTabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          scheduleTabs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+
+      const WATCHLIST_STORAGE_KEY = 'flipplay_watchlist_ids';
+
+      function getWatchlist() {
+        try {
+          const raw = localStorage.getItem(WATCHLIST_STORAGE_KEY);
+          return raw ? JSON.parse(raw) : [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function isBookmarked(id) {
+        const list = getWatchlist();
+        return list.some(item => String(item) === String(id));
+      }
+
+      function toggleWatchlist(id) {
+        let list = getWatchlist();
+        const strId = String(id);
+        const index = list.findIndex(item => String(item) === strId);
+        let added = false;
+
+        if (index > -1) {
+          list.splice(index, 1);
+        } else {
+          list.push(strId);
+          added = true;
+        }
+
+        try {
+          localStorage.setItem(WATCHLIST_STORAGE_KEY, JSON.stringify(list));
+        } catch (e) {}
+
+        updateWatchlistCounters();
+        renderFilteredResults();
+        return added;
+      }
+
+      function updateWatchlistCounters() {
+        const count = getWatchlist().length;
+        const navCount = document.getElementById('nav-watchlist-count');
+        const mobileCount = document.getElementById('mobile-watchlist-count');
+        const gridCount = document.getElementById('grid-watchlist-count');
+
+        if (navCount) navCount.textContent = count;
+        if (mobileCount) mobileCount.textContent = count;
+        if (gridCount) gridCount.textContent = count;
+      }
+
+      const TENRAI_API_URL = 'https://api.tenrai.org/v1/anime';
+
+      let allAnimeData = [];
+      let activeAura = 'all';
+      let searchQuery = '';
+      let activeSort = 'score-desc';
+      let isFetching = false;
+
+      const vibeSearchInput = document.getElementById('vibe-search-input');
+      const vibeSearchClear = document.getElementById('vibe-search-clear');
+      const vibeSortSelect = document.getElementById('vibe-sort-select');
+      const auraButtons = document.querySelectorAll('.aura-btn');
+      const vibeMediaCount = document.getElementById('vibe-media-count');
+      const vibeLoading = document.getElementById('vibe-loading');
+      const vibeError = document.getElementById('vibe-error');
+      const vibeErrorMsg = document.getElementById('vibe-error-msg');
+      const vibeRetryBtn = document.getElementById('vibe-retry-btn');
+      const vibeEmpty = document.getElementById('vibe-empty');
+      const vibeEmptyDesc = document.getElementById('vibe-empty-desc');
+      const vibeResetBtn = document.getElementById('vibe-reset-btn');
+      const vibeCardsGrid = document.getElementById('vibe-cards-grid');
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      const AURA_DEFINITIONS = {
+        'all': {
+          label: 'Semua',
+          filterFn: function () { return true; }
+        },
+        'high-energy': {
+          label: 'High Action',
+          filterFn: function (anime) {
+            const highEnergyGenres = ['Action', 'Adventure', 'Sports', 'Sci-Fi', 'Fantasy'];
+            return Array.isArray(anime.genres) && anime.genres.some(function (g) {
+              const name = typeof g === 'string' ? g : (g && g.name);
+              return highEnergyGenres.includes(name);
+            });
+          }
+        },
+        'melancholy': {
+          label: 'Melancholy',
+          filterFn: function (anime) {
+            const melancholyGenres = ['Drama', 'Psychological', 'Romance', 'Mystery', 'Supernatural', 'Suspense'];
+            return Array.isArray(anime.genres) && anime.genres.some(function (g) {
+              const name = typeof g === 'string' ? g : (g && g.name);
+              return melancholyGenres.includes(name);
+            });
+          }
+        },
+        'binge-mode': {
+          label: 'Binge Mode',
+          filterFn: function (anime) {
+            if (typeof anime.episodes === 'number' && anime.episodes >= 24) return true;
+            if (typeof anime.episodes === 'number' && anime.episodes >= 12 && anime.status === 'Finished Airing') return true;
+            return false;
+          }
+        },
+        'watchlist': {
+          label: 'Watchlist Saya',
+          filterFn: function (anime) {
+            const id = String(anime.mal_id || anime.id);
+            return isBookmarked(id);
+          }
+        }
+      };
+
+      async function fetchAnimeList() {
+        if (isFetching) return;
+        isFetching = true;
+
+        vibeLoading.classList.remove('hidden');
+        vibeError.classList.add('hidden');
+        vibeEmpty.classList.add('hidden');
+        vibeCardsGrid.innerHTML = '';
+        vibeMediaCount.textContent = 'Memuat...';
+
+        try {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 12000);
+
+          const response = await fetch(TENRAI_API_URL, {
+            signal: controller.signal,
+            headers: { 'Accept': 'application/json' }
+          });
+          clearTimeout(timeoutId);
+
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+          }
+
+          const result = await response.json();
+          if (!result || !Array.isArray(result.data)) {
+            throw new Error('Format data API tidak valid.');
+          }
+
+          allAnimeData = result.data;
+          vibeLoading.classList.add('hidden');
+          isFetching = false;
+
+          renderFilteredResults();
+        } catch (err) {
+          isFetching = false;
+          vibeLoading.classList.add('hidden');
+          vibeError.classList.remove('hidden');
+          vibeCardsGrid.innerHTML = '';
+          vibeMediaCount.textContent = '0 media';
+          vibeErrorMsg.textContent = 'Gagal memuat katalog dari Tenrai API: ' + (err.message || 'Periksa koneksi Anda.');
+        }
+      }
+
+      function getFilteredAndSortedAnime() {
+        const auraDef = AURA_DEFINITIONS[activeAura] || AURA_DEFINITIONS['all'];
+        const q = searchQuery.trim().toLowerCase();
+
+        let list = allAnimeData.filter(function (anime) {
+          if (!auraDef.filterFn(anime)) return false;
+          if (!q) return true;
+
+          const t1 = (anime.title || '').toLowerCase();
+          const t2 = (anime.title_english || '').toLowerCase();
+          const t3 = (anime.title_japanese || '').toLowerCase();
+          return t1.includes(q) || t2.includes(q) || t3.includes(q);
+        });
+
+        if (activeSort === 'score-desc') {
+          list.sort((a, b) => (Number(b.score) || 0) - (Number(a.score) || 0));
+        } else if (activeSort === 'title-asc') {
+          list.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+        } else if (activeSort === 'episodes-desc') {
+          list.sort((a, b) => (b.episodes || 0) - (a.episodes || 0));
+        }
+
+        return list;
+      }
+
+      function renderFilteredResults() {
+        if (!allAnimeData.length) return;
+
+        const filtered = getFilteredAndSortedAnime();
+        vibeMediaCount.textContent = `${filtered.length} media`;
+
+        if (filtered.length === 0) {
+          vibeCardsGrid.innerHTML = '';
+          vibeEmpty.classList.remove('hidden');
+          if (activeAura === 'watchlist') {
+            vibeEmptyDesc.innerHTML = 'Watchlist kamu masih kosong.<br>Klik tombol hati (❤️) pada kartu anime mana pun untuk menyimpannya di sini.';
+          } else {
+            vibeEmptyDesc.textContent = searchQuery
+              ? `Tidak ditemukan judul yang cocok dengan kata kunci "${searchQuery}".`
+              : 'Tidak ada media pada filter kategori ini.';
+          }
+          return;
+        }
+
+        vibeEmpty.classList.add('hidden');
+
+        vibeCardsGrid.innerHTML = filtered.map(function (anime) {
+          const malId = String(anime.mal_id || anime.id || '');
+          const bookmarked = isBookmarked(malId);
+          const title = escapeHtml(anime.title || anime.title_english || 'Untitled Anime');
+          const poster = anime.images?.webp?.large_image_url ||
+                         anime.images?.jpg?.large_image_url ||
+                         anime.images?.jpg?.image_url ||
+                         'poster_aot.png';
+          const score = anime.score ? `★ ${Number(anime.score).toFixed(1)}` : '★ N/A';
+          const episodes = anime.episodes ? `${anime.episodes} Ep` : (anime.status === 'Currently Airing' ? 'On Air' : 'TBA');
+          const type = escapeHtml(anime.type || 'TV');
+
+          const genres = Array.isArray(anime.genres) ? anime.genres.slice(0, 2) : [];
+          const genreTagsHtml = genres.map(function (g) {
+            const name = typeof g === 'string' ? g : (g && g.name ? g.name : '');
+            return `<span class="text-[10px] px-2 py-0.5 rounded-full bg-flipsec text-textsec border border-border">${escapeHtml(name)}</span>`;
+          }).join('');
+
+          const synopsis = anime.synopsis
+            ? escapeHtml(anime.synopsis.slice(0, 95) + (anime.synopsis.length > 95 ? '...' : ''))
+            : 'Belum ada ringkasan sinopsis untuk serial ini.';
+
+          return `
+            <article
+              class="card-surface rounded-2xl overflow-hidden border border-border flex flex-col group cursor-pointer hover:border-primary/50 transition-all"
+              data-mal-id="${malId}"
+            >
+              <div class="relative aspect-[3/4] overflow-hidden bg-flipcard">
+                <img
+                  src="${poster}"
+                  alt="${title}"
+                  loading="lazy"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  onerror="this.onerror=null; this.src='poster_aot.png';"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-flipcard via-transparent to-black/40"></div>
+
+                
+                <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 flex-wrap">
+                  <span class="badge-tag badge-live text-[10px] py-0.5">${type}</span>
+                </div>
+
+                <div class="absolute top-2.5 right-2.5 flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    class="bookmark-btn w-8 h-8 rounded-lg flex items-center justify-center bg-flipsec/80 backdrop-blur-md border border-border text-textsec hover:text-rose-400 transition-colors z-20 ${bookmarked ? 'text-rose-500 border-rose-500/50 bg-rose-500/10' : ''}"
+                    data-bookmark-id="${malId}"
+                    title="${bookmarked ? 'Hapus dari Watchlist' : 'Tambah ke Watchlist'}"
+                    aria-label="Bookmark anime"
+                  >
+                    <svg class="w-4 h-4 pointer-events-none" fill="${bookmarked ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                  </button>
+                </div>
+
+                
+                <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-xs">
+                  <span class="badge-tag badge-rating text-[10px] font-bold">${score}</span>
+                  <span class="px-2 py-0.5 rounded bg-flipsec/90 backdrop-blur-md text-textsec text-[11px] border border-border font-medium">
+                    ${episodes}
+                  </span>
+                </div>
+              </div>
+
+              
+              <div class="p-4 flex flex-col justify-between flex-grow gap-2.5 bg-flipcard">
+                <div>
+                  <h3 class="text-sm font-bold text-textprim line-clamp-1 group-hover:text-secondary transition-colors" title="${title}">
+                    ${title}
+                  </h3>
+                  <p class="text-textsec text-[11px] line-clamp-2 mt-1 leading-relaxed">
+                    ${synopsis}
+                  </p>
+                </div>
+
+                <div class="flex items-center justify-between pt-1 border-t border-border/80">
+                  <div class="flex items-center gap-1">
+                    ${genreTagsHtml}
+                  </div>
+                  <span class="text-[11px] text-secondary font-semibold group-hover:translate-x-0.5 transition-transform">
+                    Detail →
+                  </span>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      vibeCardsGrid.addEventListener('click', function (e) {
+        const bookmarkBtn = e.target.closest('.bookmark-btn');
+        if (bookmarkBtn) {
+          e.stopPropagation();
+          const id = bookmarkBtn.getAttribute('data-bookmark-id');
+          toggleWatchlist(id);
+          return;
+        }
+
+        const card = e.target.closest('article[data-mal-id]');
+        if (card) {
+          const malId = card.getAttribute('data-mal-id');
+          const anime = allAnimeData.find(a => String(a.mal_id || a.id) === malId);
+          if (anime) {
+            openDetailModal(anime);
+          }
+        }
+      });
+
+      vibeSearchInput.addEventListener('input', function (e) {
+        searchQuery = e.target.value;
+        vibeSearchClear.classList.toggle('hidden', searchQuery.trim().length === 0);
+        renderFilteredResults();
+      });
+
+      vibeSearchClear.addEventListener('click', function () {
+        vibeSearchInput.value = '';
+        searchQuery = '';
+        vibeSearchClear.classList.add('hidden');
+        vibeSearchInput.focus();
+        renderFilteredResults();
+      });
+
+      window.addEventListener('keydown', function (e) {
+        if (e.key === '/' && document.activeElement !== vibeSearchInput && !animeModal.classList.contains('pointer-events-auto')) {
+          e.preventDefault();
+          vibeSearchInput.focus();
+          vibeSearchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+
+      vibeSortSelect.addEventListener('change', function (e) {
+        activeSort = e.target.value;
+        renderFilteredResults();
+      });
+
+      auraButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const aura = this.getAttribute('data-aura');
+          if (activeAura === aura) return;
+
+          activeAura = aura;
+          auraButtons.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-pressed', 'false');
+          });
+          this.classList.add('active');
+          this.setAttribute('aria-pressed', 'true');
+
+          renderFilteredResults();
+        });
+      });
+
+      function activateWatchlistTab() {
+        activeAura = 'watchlist';
+        auraButtons.forEach(b => {
+          const isWatch = b.getAttribute('data-aura') === 'watchlist';
+          b.classList.toggle('active', isWatch);
+          b.setAttribute('aria-pressed', String(isWatch));
+        });
+        const vibeSection = document.getElementById('vibe-grid');
+        if (vibeSection) {
+          vibeSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        renderFilteredResults();
+      }
+
+      document.getElementById('nav-watchlist-btn')?.addEventListener('click', activateWatchlistTab);
+      document.getElementById('mobile-watchlist-btn')?.addEventListener('click', function () {
+        mobileMenu.classList.remove('open');
+        activateWatchlistTab();
+      });
+
+      vibeRetryBtn.addEventListener('click', fetchAnimeList);
+      vibeResetBtn.addEventListener('click', function () {
+        searchQuery = '';
+        vibeSearchInput.value = '';
+        vibeSearchClear.classList.add('hidden');
+        activeAura = 'all';
+        auraButtons.forEach(b => {
+          const isAll = b.getAttribute('data-aura') === 'all';
+          b.classList.toggle('active', isAll);
+          b.setAttribute('aria-pressed', String(isAll));
+        });
+        renderFilteredResults();
+      });
+
+      const animeModal = document.getElementById('anime-modal');
+      const animeModalBackdrop = document.getElementById('anime-modal-backdrop');
+      const animeModalClose = document.getElementById('anime-modal-close');
+      const animeModalBody = document.getElementById('anime-modal-body');
+
+      function openDetailModal(anime) {
+        const malId = String(anime.mal_id || anime.id || '');
+        const bookmarked = isBookmarked(malId);
+        const title = escapeHtml(anime.title || anime.title_english || 'Untitled Anime');
+        const titleJp = escapeHtml(anime.title_japanese || '');
+        const poster = anime.images?.webp?.large_image_url ||
+                       anime.images?.jpg?.large_image_url ||
+                       anime.images?.jpg?.image_url ||
+                       'poster_aot.png';
+        const score = anime.score ? `★ ${Number(anime.score).toFixed(1)}` : '★ N/A';
+        const scoredBy = anime.scored_by ? `(${Number(anime.scored_by).toLocaleString()} voters)` : '';
+        const episodes = anime.episodes ? `${anime.episodes} Episode` : (anime.status || 'TBA');
+        const status = escapeHtml(anime.status || 'Status N/A');
+        const studio = Array.isArray(anime.studios) && anime.studios.length > 0
+          ? anime.studios.map(s => escapeHtml(s.name)).join(', ')
+          : 'Studio Tidak Tercatat';
+        const synopsis = anime.synopsis
+          ? escapeHtml(anime.synopsis)
+          : 'Sinopsis resmi belum tersedia untuk judul ini.';
+
+        const genres = Array.isArray(anime.genres) ? anime.genres : [];
+        const genreTags = genres.map(g => `<span class="badge-tag bg-flipcard text-secondary border border-border">${escapeHtml(g.name || g)}</span>`).join('');
+
+        let trailerHtml = '';
+        if (anime.trailer && (anime.trailer.embed_url || anime.trailer.youtube_id)) {
+          const embedUrl = anime.trailer.embed_url || `https://www.youtube-nocookie.com/embed/${anime.trailer.youtube_id}`;
+          trailerHtml = `
+            <div class="mt-4 pt-4 border-t border-border">
+              <h4 class="text-xs font-bold text-textprim mb-2 flex items-center gap-1.5">
+                <span>🎬 Cuplikan Trailer Resmi</span>
+              </h4>
+              <div class="relative w-full aspect-video rounded-xl overflow-hidden border border-border bg-black">
+                <iframe
+                  src="${embedUrl}"
+                  title="${title} Trailer"
+                  class="w-full h-full"
+                  frameborder="0"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          `;
+        }
+
+        animeModalBody.innerHTML = `
+          <div class="flex flex-col sm:flex-row gap-6">
+            
+            <div class="w-full sm:w-48 flex-shrink-0 flex flex-col items-center">
+              <div class="w-40 sm:w-full rounded-xl overflow-hidden border border-border shadow-lg">
+                <img src="${poster}" alt="${title}" class="w-full h-auto object-cover" onerror="this.src='poster_aot.png'" />
+              </div>
+              <div class="w-full flex flex-col gap-2 mt-4">
+                <button
+                  type="button"
+                  id="modal-toggle-watchlist-btn"
+                  class="w-full py-2.5 px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${bookmarked ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40' : 'bg-flipsec border border-border text-textsec hover:text-white'}"
+                >
+                  <svg class="w-4 h-4" fill="${bookmarked ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                  <span id="modal-watchlist-text">${bookmarked ? 'Dalam Watchlist' : 'Tambah ke Watchlist'}</span>
+                </button>
+                ${anime.url ? `<a href="${anime.url}" target="_blank" rel="noopener noreferrer" class="w-full py-2 px-3 rounded-xl text-[11px] text-center font-medium bg-flipsec/60 border border-border text-textsec hover:text-secondary transition-colors">Buka MyAnimeList ↗</a>` : ''}
+              </div>
+            </div>
+
+            
+            <div class="flex-grow flex flex-col gap-3">
+              <div>
+                <div class="flex items-center gap-1.5 flex-wrap mb-1">
+                  <span class="badge-tag badge-live text-[10px]">${anime.type || 'TV'}</span>
+                  <span class="badge-tag badge-rating text-[10px]">${score} ${scoredBy}</span>
+                  <span class="badge-tag bg-flipsec text-textsec border border-border text-[10px]">${status}</span>
+                </div>
+                <h3 class="text-xl font-black text-textprim leading-snug">${title}</h3>
+                ${titleJp ? `<p class="text-textsec text-xs font-medium">${titleJp}</p>` : ''}
+              </div>
+
+              
+              <div class="grid grid-cols-2 gap-2 p-3 rounded-xl bg-flipsec/60 border border-border text-xs">
+                <div>
+                  <span class="text-textsec block text-[10px] uppercase tracking-wider">Studio:</span>
+                  <span class="font-semibold text-textprim truncate block">${studio}</span>
+                </div>
+                <div>
+                  <span class="text-textsec block text-[10px] uppercase tracking-wider">Durasi / Total:</span>
+                  <span class="font-semibold text-textprim">${episodes}</span>
+                </div>
+              </div>
+
+              
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                ${genreTags}
+              </div>
+
+              
+              <div class="pt-1">
+                <h4 class="text-xs font-bold text-textprim mb-1">Sinopsis Cerita:</h4>
+                <p class="text-textsec text-xs leading-relaxed max-h-40 overflow-y-auto pr-1 modal-scrollbar whitespace-pre-line">
+                  ${synopsis}
+                </p>
+              </div>
+
+              
+              ${trailerHtml}
+            </div>
+          </div>
+        `;
+
+        const modalBtn = document.getElementById('modal-toggle-watchlist-btn');
+        if (modalBtn) {
+          modalBtn.addEventListener('click', function () {
+            const isNowBookmarked = toggleWatchlist(malId);
+            const textSpan = document.getElementById('modal-watchlist-text');
+            if (isNowBookmarked) {
+              modalBtn.className = 'w-full py-2.5 px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer bg-rose-500/20 text-rose-300 border border-rose-500/40';
+              modalBtn.querySelector('svg').setAttribute('fill', 'currentColor');
+              if (textSpan) textSpan.textContent = 'Dalam Watchlist';
+            } else {
+              modalBtn.className = 'w-full py-2.5 px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer bg-flipsec border border-border text-textsec hover:text-white';
+              modalBtn.querySelector('svg').setAttribute('fill', 'none');
+              if (textSpan) textSpan.textContent = 'Tambah ke Watchlist';
+            }
+          });
+        }
+
+        animeModal.classList.remove('opacity-0', 'pointer-events-none');
+        animeModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        animeModal.classList.add('opacity-0', 'pointer-events-none');
+        animeModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        const iframe = animeModalBody.querySelector('iframe');
+        if (iframe) iframe.src = '';
+      }
+
+      animeModalBackdrop.addEventListener('click', closeModal);
+      animeModalClose.addEventListener('click', closeModal);
+      window.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !animeModal.classList.contains('pointer-events-none')) {
+          closeModal();
+        }
+      });
+
+      const contactForm = document.getElementById('contact-form');
+      contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const btn = document.getElementById('submit-contact');
+        const orig = btn.innerHTML;
+        btn.innerHTML = 'Mengirim Pesan...';
+        btn.disabled = true;
+
+        setTimeout(function () {
+          btn.innerHTML = '✓ Pesan Terkirim!';
+          btn.classList.add('bg-emerald-600');
+          contactForm.reset();
+          setTimeout(function () {
+            btn.innerHTML = orig;
+            btn.classList.remove('bg-emerald-600');
+            btn.disabled = false;
+          }, 3000);
+        }, 1200);
+      });
+
+      updateWatchlistCounters();
+      fetchAnimeList();
+    </script>
+  </body>
+</html>

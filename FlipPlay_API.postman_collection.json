@@ -1,0 +1,515 @@
+{
+	"info": {
+		"_postman_id": "c1f7a21e-7b44-4f81-9b7e-97c36a4fae10",
+		"name": "FlipPlay REST API - Modul 4 Pemrograman Web UMM",
+		"description": "Postman Collection pengujian endpoint REST API FlipPlay Modul 4 (Laravel 12, MySQL, Eloquent Relationship).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Media CRUD",
+			"item": [
+				{
+					"name": "1. GET Seluruh Media (Index + Pagination)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/media",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"media"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. GET Detail Media (Show + Eager Load Users)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/media/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"media",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. POST Tambah Media Baru (Store - Happy Path)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Solo Leveling\",\n    \"type\": \"Anime\",\n    \"genre\": \"Action Fantasy\",\n    \"rating\": 8.5,\n    \"release_year\": 2024,\n    \"description\": \"Sung Jin-woo bangkit menjadi hunter terkuat di dunia.\",\n    \"episodes\": 12,\n    \"studio\": \"A-1 Pictures\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/media",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"media"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. POST Media - Judul Kosong (Failure Path 422)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"Anime\",\n    \"genre\": \"Action Fantasy\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/media",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"media"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. POST Media - Judul Duplikat (Failure Path 422)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Attack on Titan\",\n    \"type\": \"Anime\",\n    \"genre\": \"Dark Fantasy\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/media",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"media"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. PATCH Update Media (Partial Update - Happy Path)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rating\": 8.2,\n    \"description\": \"Deskripsi media telah diperbarui melalui PATCH partial update.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/media/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"media",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. PATCH Update Media - Judul Duplikat (Failure Path 422)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Attack on Titan\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/media/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"media",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8. DELETE Media (Destroy - Happy Path)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/media/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"media",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9. GET Media ID Tidak Ditemukan (Failure Path 404)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/media/9999",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"media",
+								"9999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10. GET Media dengan Pencarian Judul (Query Filter)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/media?search=Titan",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"media"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Titan"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. User Collection (Custom Actions)",
+			"item": [
+				{
+					"name": "1. POST Tambah Media ke Koleksi (Attach - 201 Created)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/users/2/collection/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2",
+								"collection",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. POST Tambah Media Sama (Failure Path 409 Conflict)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/users/1/collection/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								"collection",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. GET Koleksi Pengguna (Get Collection)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/users/1/collection",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								"collection"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. DELETE Media dari Koleksi (Detach - 200 OK)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/users/1/collection/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								"collection",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. DELETE Media yang Tidak Ada di Koleksi (Failure Path 404)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/users/2/collection/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2",
+								"collection",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. POST/DELETE Akses User atau Media Tidak Ditemukan (404)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/users/9999/collection/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"9999",
+								"collection",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Helper Users",
+			"item": [
+				{
+					"name": "GET Daftar Seluruh Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Detail User & Media Terhubung",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/users/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		}
+	]
+}
